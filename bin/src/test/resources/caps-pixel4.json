@@ -1,0 +1,25 @@
+{
+	"capabilities": [
+		{
+			"deviceName": "Pixel 4",
+			"browserName": "Chrome",
+			"version": "69.0.3497.100",
+			"maxInstances": 1,
+			"automationName": "XCUITest",
+			"platform": "iOS"
+		}
+	],
+	"configuration": {
+		"cleanUpCycle": 3000,
+		"timeout": 30000,
+		"proxy": "org.openqa.grid.selenium.proxy.DefaultRemoteProxy",
+		"url": "http://192.168.31.106:4628/wd/hub",
+		"host": "192.168.31.106",
+		"port": 4628,
+		"maxSession": 2,
+		"register": true,
+		"registerCycle": 5000,
+		"hubPort": 4444,
+		"hubHost": "192.168.31.106"
+	}
+}
