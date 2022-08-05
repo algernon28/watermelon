@@ -1,0 +1,5 @@
+name: Test-method Suite
+suiteFiles:
+- Test-CHROME.yaml
+- Test-FIREFOX.yaml
+- Test-EDGE.yaml

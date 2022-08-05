@@ -1,0 +1,12 @@
+name: Test-method Suite
+tests:
+-  name: SauceLabs EN FIREFOX
+   parameters:
+      browser: Firefox
+#The following parameters are optional, the defaults are taken from Utils
+      language: en
+      country: US
+      architecture: X64
+      version: latest
+   classes:
+   - com.watermelon.steps.CucumberFirefoxRunner

@@ -1,0 +1,11 @@
+name: Test-method Suite
+tests:
+-  name: SauceLabs IT CHROME
+   parameters:
+      browser: Chrome
+      #The following parameters are optional, the defaults are taken from Utils
+      language: it
+      country: IT
+      architecture: X64
+   classes:
+   - com.watermelon.steps.CucumberChromeRunner
