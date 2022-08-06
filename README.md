@@ -9,27 +9,43 @@ It comes with a full sample test-suite built on <a href="https://www.saucedemo.c
 
 ## How to script it
 - Configuration: if config-<dev|preprod|prod>.yaml structure works for you, then you don't need to change anything beside the values. If you need different structure in the yaml, then you need to implement your own Configuration binding and register it with Guice in ConfigurationModule.
-- Pages: All you need to do is to extend WebPage, and implement a constructor with Webdriver and WebdriverWait as parameters, both injected (see below).
+- Pages: All you need to do is to extend WebPage, and implement a constructor with Webdriver and WebdriverWait as parameters, both injected (see below)**.
+
 ```Java
-	@Inject
-	public MyPage(WebDriver driver, WebDriverWait wait) {
-		super(driver, wait);
+	import com.watermelon.core.WebPage;
+
+	public class MyPage extends WebPage {
+
+		@Inject
+		public MyPage(WebDriver driver, WebDriverWait wait) {
+			super(driver, wait);
+		}
 	}
 ```
-- Dependencies: don't use "new" anymore! Declare your dependencies with @Inject, either as field or in your constructor: If the class has empty constructor it will be instantiated and passed to your class by Guice. In the example below, Guice will create "page" as instance of MyPage and _inject_ it**. 
+- Dependencies: don't use "new" anymore! Declare your dependencies with @Inject, either as field or in your constructor: If the class has empty constructor it will be instantiated and passed to your class by Guice. In the example below, Guice will create "page" as instance of MyPage and _inject_ it***. 
 
 ```Java
 @Inject
-private MyPage page;
-
-public void test(){
-    page.doSomething() 
-		}
+private SomePage somePage; // This page will be instantiated as soon as it is used
 ```
 - Steps (glue): extend BaseSteps. Beside and what we said about injection, just write them as usual.
+
+```Java
+import com.watermelon.steps.BaseSteps;
+public class MyPageSteps extends BaseSteps { 
+	@Inject 
+	private MyPage page;
+    
+	public MyPageSteps() {
+        page.doSomething(); // MyPage will be instantiated here
+    }
+}
+```
 - Standard TestNG unit tests (no Gherkin) are also easily implemented (see WebTable test) 
 
-** Note that MyPage doesn't strictly have a constructor "without parameters", however since both WebDriver and WebDriverWait are injected it will still work.
+** This is necessary to make PageFactory.initElements() work in the parent class.
+
+*** Note that MyPage doesn't strictly have a constructor "without parameters", however since both WebDriver and WebDriverWait are injected it will still work.
 
 ## Nuts & Bolts
 
