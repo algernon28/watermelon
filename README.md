@@ -28,7 +28,7 @@ It comes with a full sample test-suite built on <a href="https://www.saucedemo.c
 @Inject
 private SomePage somePage; // This page will be instantiated as soon as it is used
 ```
-- Steps (glue): extend BaseSteps. Beside and what we said about injection, just write them as usual.
+- Steps (glue): extend BaseSteps. Beside that and what we said about injection, just write them as usual.
 
 ```Java
 import com.watermelon.steps.BaseSteps;
