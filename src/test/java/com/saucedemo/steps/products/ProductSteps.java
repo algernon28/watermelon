@@ -1,23 +1,21 @@
 package com.saucedemo.steps.products;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.from;
-import static org.assertj.core.api.BDDAssertions.then;
-
-import java.util.List;
-import java.util.Map;
-
 import com.google.inject.Inject;
 import com.saucedemo.pages.Header;
 import com.saucedemo.pages.products.InventoryItem;
 import com.saucedemo.pages.products.ProductPage;
 import com.saucedemo.pages.products.ProductPage.SORT_METHOD;
 import com.watermelon.steps.BaseSteps;
-
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import lombok.extern.slf4j.Slf4j;
+
+import java.util.List;
+import java.util.Map;
+
+import static org.assertj.core.api.Assertions.from;
+import static org.assertj.core.api.BDDAssertions.then;
 
 @Slf4j
 public class ProductSteps extends BaseSteps {

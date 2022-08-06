@@ -1,14 +1,13 @@
 package com.watermelon.steps;
 
-import java.util.ResourceBundle;
-
+import com.google.inject.Inject;
+import com.watermelon.core.di.modules.Configuration;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.google.inject.Inject;
-import com.watermelon.core.di.modules.Configuration;
+import java.util.ResourceBundle;
 
 public abstract class BaseSteps {
 

@@ -1,16 +1,14 @@
 package com.saucedemo.pages;
 
-import java.util.Optional;
-
+import com.google.inject.Inject;
+import com.watermelon.core.WebPage;
+import io.cucumber.guice.ScenarioScoped;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.google.inject.Inject;
-import com.watermelon.core.WebPage;
-
-import io.cucumber.guice.ScenarioScoped;
+import java.util.Optional;
 
 @ScenarioScoped
 public class LoginPage extends WebPage {

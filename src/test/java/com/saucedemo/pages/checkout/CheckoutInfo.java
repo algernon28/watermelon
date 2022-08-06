@@ -1,13 +1,12 @@
 package com.saucedemo.pages.checkout;
 
+import com.google.inject.Inject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import com.google.inject.Inject;
 
 public class CheckoutInfo extends CheckoutPage {
 	@FindBys({ @FindBy(xpath = "//span[@class='title']"),

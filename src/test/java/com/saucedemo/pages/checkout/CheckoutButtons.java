@@ -1,13 +1,12 @@
 package com.saucedemo.pages.checkout;
 
+import com.google.inject.Inject;
+import com.saucedemo.pages.SauceLabsSection;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import com.google.inject.Inject;
-import com.saucedemo.pages.SauceLabsSection;
 
 public class CheckoutButtons extends SauceLabsSection {
 	@FindBy(className = "checkout_buttons")

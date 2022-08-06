@@ -1,9 +1,9 @@
 package com.watermelon.core.webelements;
 
+import org.openqa.selenium.WebElement;
+
 import java.util.List;
 import java.util.Optional;
-
-import org.openqa.selenium.WebElement;
 
 /**
  * Wraps a list of radiobutton Webelements as a group

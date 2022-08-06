@@ -1,29 +1,27 @@
 package com.watermelon.steps;
 
-import static com.google.common.net.MediaType.PLAIN_TEXT_UTF_8;
-import static com.google.common.net.MediaType.PNG;
-
-import java.awt.AWTException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Locale;
-import java.util.Optional;
-
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.RemoteWebDriver;
-
 import com.google.inject.Inject;
 import com.watermelon.core.di.modules.Configuration;
-import com.watermelon.core.di.modules.DriverManager;
 import com.watermelon.core.di.modules.Configuration.Reporting.LEVEL;
-
+import com.watermelon.core.di.modules.DriverManager;
 import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+import java.awt.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Locale;
+import java.util.Optional;
+
+import static com.google.common.net.MediaType.PLAIN_TEXT_UTF_8;
+import static com.google.common.net.MediaType.PNG;
 
 public class Hooks extends AbstractTestNGCucumberTests {
 	@Inject

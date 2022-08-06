@@ -1,21 +1,19 @@
 package com.watermelon.core;
 
-import java.io.InputStream;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-
+import com.watermelon.core.di.modules.Configuration;
+import io.github.bonigarcia.wdm.config.Architecture;
+import io.github.bonigarcia.wdm.config.OperatingSystem;
+import lombok.extern.slf4j.Slf4j;
 import org.testng.xml.XmlTest;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
 import org.yaml.snakeyaml.introspector.PropertyUtils;
 import org.yaml.snakeyaml.representer.Representer;
 
-import com.watermelon.core.di.modules.Configuration;
-
-import io.github.bonigarcia.wdm.config.Architecture;
-import io.github.bonigarcia.wdm.config.OperatingSystem;
-import lombok.extern.slf4j.Slf4j;
+import java.io.InputStream;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 @Slf4j
 public class Utils {

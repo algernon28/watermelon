@@ -1,9 +1,9 @@
 package com.watermelon.core.di.modules;
 
+import lombok.Data;
+
 import java.net.MalformedURLException;
 import java.net.URL;
-
-import lombok.Data;
 
 @Data
 public class Configuration {

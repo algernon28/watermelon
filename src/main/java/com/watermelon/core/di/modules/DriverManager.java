@@ -1,10 +1,13 @@
 package com.watermelon.core.di.modules;
 
-import static com.watermelon.core.Utils.DEFAULT_BROWSER;
-
-import java.time.Duration;
-import java.util.Optional;
-
+import com.google.inject.Inject;
+import com.google.inject.Provider;
+import com.watermelon.core.Utils;
+import io.cucumber.guice.ScenarioScoped;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import io.github.bonigarcia.wdm.config.DriverManagerType;
+import io.github.bonigarcia.wdm.config.OperatingSystem;
+import io.github.bonigarcia.wdm.config.WebDriverManagerException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeOptions;
@@ -16,15 +19,10 @@ import org.slf4j.LoggerFactory;
 import org.testng.Reporter;
 import org.testng.xml.XmlTest;
 
-import com.google.inject.Inject;
-import com.google.inject.Provider;
-import com.watermelon.core.Utils;
+import java.time.Duration;
+import java.util.Optional;
 
-import io.cucumber.guice.ScenarioScoped;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import io.github.bonigarcia.wdm.config.DriverManagerType;
-import io.github.bonigarcia.wdm.config.OperatingSystem;
-import io.github.bonigarcia.wdm.config.WebDriverManagerException;
+import static com.watermelon.core.Utils.DEFAULT_BROWSER;
 
 /**
  * Service Provider: provides a thread-safe instance of {@link WebDriver} for Dependency Injection

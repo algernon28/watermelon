@@ -1,9 +1,8 @@
 package com.saucedemo.pages.products;
 
+import com.saucedemo.pages.SauceItem;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-
-import com.saucedemo.pages.SauceItem;
 
 
 public class InventoryItem extends SauceItem {

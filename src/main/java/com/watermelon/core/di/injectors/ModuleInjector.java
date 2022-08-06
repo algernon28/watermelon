@@ -5,7 +5,6 @@ import com.google.inject.Injector;
 import com.google.inject.Stage;
 import com.watermelon.core.di.modules.ConfigurationModule;
 import com.watermelon.core.di.modules.DriverManagerModule;
-
 import io.cucumber.guice.CucumberModules;
 import io.cucumber.guice.InjectorSource;
 import lombok.extern.slf4j.Slf4j;

@@ -1,7 +1,7 @@
 package com.watermelon.core.di.modules;
 
-import java.time.Duration;
-
+import com.google.inject.AbstractModule;
+import com.google.inject.Provides;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -9,8 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.inject.AbstractModule;
-import com.google.inject.Provides;
+import java.time.Duration;
 
 /**
  * Make the following objects available for Dependency Injection:

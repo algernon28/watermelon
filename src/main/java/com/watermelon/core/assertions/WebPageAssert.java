@@ -1,9 +1,8 @@
 package com.watermelon.core.assertions;
 
+import com.watermelon.core.WebPage;
 import org.assertj.core.api.AbstractAssert;
 import org.assertj.core.description.Description;
-
-import com.watermelon.core.WebPage;
 
 public class WebPageAssert extends AbstractAssert<WebPageAssert, WebPage> {
 
