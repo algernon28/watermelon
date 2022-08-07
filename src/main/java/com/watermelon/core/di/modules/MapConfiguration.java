@@ -12,6 +12,7 @@ public class MapConfiguration<K, V> extends LinkedHashMap<K, V> implements Map<K
 		return (String)get(key);		
 	}
 	
+	@SuppressWarnings("unchecked")
 	public Map<K,V> getMap(String key){
 		Objects.requireNonNull(key);
 		return (Map<K,V>)get(key);

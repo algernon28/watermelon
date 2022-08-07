@@ -2,6 +2,7 @@ package com.watermelon.core;
 
 import java.io.InputStream;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -61,9 +62,10 @@ public class Utils {
 	 */
 	public static <V, K> MapConfiguration<K, V> fromYaml(String fileName){
 		Yaml yaml = new Yaml();
-		InputStream is = Utils.class.getClassLoader().getResourceAsStream(fileName);
 		MapConfiguration<K, V> result = new MapConfiguration<>();
-		result.putAll(yaml.load(is));
+		InputStream is = Utils.class.getClassLoader().getResourceAsStream(fileName);
+		Map<K, V> map = yaml.load(is);
+		result.putAll(map);
 		return result;
 	}
 
