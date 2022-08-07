@@ -8,7 +8,9 @@ This is a very lightweight test automation framework, thought to make writing Cu
 It comes with a full sample test-suite built on <a href="https://www.saucedemo.com">SauceLabs Test Website</a>. Seeing it in action with a somewhat functional website is better than a thousand words.
 
 ## How to script it
-- Configuration: if config-<dev|preprod|prod>.yaml structure works for you, then you don't need to change anything beside the values. If you need different structure in the yaml, then you need to implement your own Configuration binding and register it with Guice in ConfigurationModule.
+- Configuration
+  - Static configuration: the config-<dev|preprod|prod>.yaml files are binded to an instance of _Configuration_, which is essentially a javabean representing the current structure of the yaml files. It is convenient but it only works with that structure.
+  - Dynamic configuration: Watermelon also dynamically binds whatever yaml you pass in the parameters as "stage" into a _MapConfiguration_, which is little more than a subclass of LinkedHashMap. This way you don't need to worry about creating new beans, but you need to remember the keys. 
 - Pages: All you need to do is to extend WebPage, and implement a constructor with Webdriver and WebdriverWait as parameters, both injected (see below)**.
 
 ```Java
