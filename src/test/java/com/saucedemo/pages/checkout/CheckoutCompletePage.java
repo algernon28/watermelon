@@ -1,12 +1,13 @@
 package com.saucedemo.pages.checkout;
 
-import com.google.inject.Inject;
-import com.saucedemo.pages.SauceLabsPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.google.inject.Inject;
+import com.saucedemo.pages.SauceLabsPage;
 
 public class CheckoutCompletePage extends SauceLabsPage {
 

@@ -9,4 +9,4 @@ tests:
       architecture: X64
       version: latest
    classes:
-   - com.watermelon.steps.CucumberFirefoxRunner
+   - com.saucedemo.steps.CucumberFirefoxRunner

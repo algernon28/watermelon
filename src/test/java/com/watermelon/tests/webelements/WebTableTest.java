@@ -1,7 +1,12 @@
 package com.watermelon.tests.webelements;
 
-import com.watermelon.core.webelements.WebTable;
-import io.github.bonigarcia.wdm.WebDriverManager;
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.Map;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,12 +14,9 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.List;
-import java.util.Map;
+import com.watermelon.core.webelements.WebTable;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class WebTableTest {
 	private WebDriver driver;

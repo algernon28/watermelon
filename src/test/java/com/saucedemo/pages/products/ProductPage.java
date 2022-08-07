@@ -1,8 +1,10 @@
 package com.saucedemo.pages.products;
 
-import com.google.inject.Inject;
-import com.saucedemo.pages.SauceLabsPage;
-import lombok.extern.slf4j.Slf4j;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,10 +13,10 @@ import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.google.inject.Inject;
+import com.saucedemo.pages.SauceLabsPage;
+
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class ProductPage extends SauceLabsPage {

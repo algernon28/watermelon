@@ -1,14 +1,15 @@
 package com.saucedemo.pages;
 
-import lombok.SneakyThrows;
-import lombok.extern.slf4j.Slf4j;
+import java.text.NumberFormat;
+import java.util.Locale;
+import java.util.Objects;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.locators.RelativeLocator;
 
-import java.text.NumberFormat;
-import java.util.Locale;
-import java.util.Objects;
+import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class SauceItem implements Comparable<SauceItem> {

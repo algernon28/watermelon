@@ -9,4 +9,4 @@ tests:
       architecture: X64
       version: latest
    classes:
-   - com.watermelon.steps.CucumberEdgeRunner
+   - com.saucedemo.steps.CucumberEdgeRunner

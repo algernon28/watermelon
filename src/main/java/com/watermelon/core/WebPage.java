@@ -1,16 +1,22 @@
 package com.watermelon.core;
 
-import com.google.inject.Inject;
-import com.watermelon.core.di.modules.Configuration;
-import com.watermelon.core.di.modules.DriverManagerModule;
-import org.openqa.selenium.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import com.google.inject.Inject;
+import com.watermelon.core.di.modules.DriverManagerModule;
+import com.watermelon.core.di.modules.MapConfiguration;
 
 /**
  * Page Object Parent class
@@ -27,8 +33,10 @@ public abstract class WebPage {
 	@Inject
 	protected JavascriptExecutor jsExecutor;
 
+
 	@Inject
-	protected Configuration configuration;
+	protected MapConfiguration<String, Object> configuration;
+
 
 	protected WebPage(WebDriver driver, WebDriverWait wait) {
 		this.driver = driver;

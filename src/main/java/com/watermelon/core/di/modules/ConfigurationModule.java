@@ -1,18 +1,20 @@
 package com.watermelon.core.di.modules;
 
-import com.google.inject.AbstractModule;
-import com.google.inject.Provides;
-import com.watermelon.core.Utils;
-import io.cucumber.guice.ScenarioScoped;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import static com.watermelon.core.Utils.DEFAULT_COUNTRY;
+import static com.watermelon.core.Utils.DEFAULT_LANG;
 
 import java.util.Locale;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import static com.watermelon.core.Utils.DEFAULT_COUNTRY;
-import static com.watermelon.core.Utils.DEFAULT_LANG;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.google.inject.AbstractModule;
+import com.google.inject.Provides;
+import com.watermelon.core.Utils;
+
+import io.cucumber.guice.ScenarioScoped;
 
 /**
  * Make the following objects available for Dependency Injection:
@@ -25,6 +27,8 @@ import static com.watermelon.core.Utils.DEFAULT_LANG;
 public class ConfigurationModule extends AbstractModule {
 	private static final Logger log = LoggerFactory.getLogger(ConfigurationModule.class);
 	private static final String CONFIGFILE_PARAM = "stage";
+	private String stage = Optional.ofNullable(System.getenv(CONFIGFILE_PARAM))
+			.orElse(System.getProperty(CONFIGFILE_PARAM));
 
 	@Override
 	protected void configure() {
@@ -33,12 +37,15 @@ public class ConfigurationModule extends AbstractModule {
 
 	@Provides
 	public Configuration getConfiguration() {
-		String stage = Optional.ofNullable(System.getenv(CONFIGFILE_PARAM))
-				.orElse(System.getProperty(CONFIGFILE_PARAM));
 		Configuration config = Utils.loadYaml(Configuration.class, stage);
 		config.setGithubToken(System.getProperty("githubToken"));
 		log.debug("Configuration loaded: {}", config);
 		return config;
+	}
+
+	@Provides 
+	public MapConfiguration<String,Object> getConfigurationBean() {
+		return Utils.fromYaml(stage);
 	}
 
 	@Provides

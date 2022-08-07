@@ -1,13 +1,14 @@
 package com.watermelon.steps;
 
-import com.google.inject.Inject;
-import com.watermelon.core.di.modules.Configuration;
+import java.util.ResourceBundle;
+
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.ResourceBundle;
+import com.google.inject.Inject;
+import com.watermelon.core.di.modules.MapConfiguration;
 
 public abstract class BaseSteps {
 
@@ -25,8 +26,9 @@ public abstract class BaseSteps {
 	@Inject
 	protected Actions actions;
 
+
 	@Inject
-	protected Configuration config;
+	private MapConfiguration<String, Object> config;
 
 	@Inject
 	protected ResourceBundle bundle;

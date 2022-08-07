@@ -1,47 +1,59 @@
 package com.watermelon.steps;
 
-import com.google.inject.Inject;
-import com.watermelon.core.di.modules.Configuration;
-import com.watermelon.core.di.modules.Configuration.Reporting.LEVEL;
-import com.watermelon.core.di.modules.DriverManager;
-import io.cucumber.java.After;
-import io.cucumber.java.AfterStep;
-import io.cucumber.java.Before;
-import io.cucumber.java.Scenario;
-import io.cucumber.testng.AbstractTestNGCucumberTests;
+import static com.google.common.net.MediaType.PLAIN_TEXT_UTF_8;
+import static com.google.common.net.MediaType.PNG;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Optional;
+
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import java.awt.*;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Locale;
-import java.util.Optional;
+import com.google.inject.Inject;
+import com.watermelon.core.di.modules.DriverManager;
+import com.watermelon.core.di.modules.MapConfiguration;
 
-import static com.google.common.net.MediaType.PLAIN_TEXT_UTF_8;
-import static com.google.common.net.MediaType.PNG;
+import io.cucumber.java.After;
+import io.cucumber.java.AfterStep;
+import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
+import io.cucumber.testng.AbstractTestNGCucumberTests;
 
 public class Hooks extends AbstractTestNGCucumberTests {
 	@Inject
 	WebDriver driver;
 
+
 	@Inject
-	Configuration config;
+	MapConfiguration<String, Object> config;
+	
+	public enum LEVEL {
+		ALWAYS, ONLY_FAILED
+	}
 
 	@Inject
 	Locale locale;
 
 	@Before(order = 1)
-	public void startUp() throws IOException, AWTException {
+	public void startUp() throws IOException {
 		driver.manage().window().maximize();
-		driver.navigate().to(config.getServer().getURL());
+		Map<String, Object> server = config.getMap("server");
+		String protocol = (String)server.get("protocol");
+		String host = (String)server.get("host");
+		int port =  (Integer)server.get("port");
+		String resource = (String)server.get("resource");		
+		driver.navigate().to(new URL(protocol, host, port, resource));
 	}
 
 	@AfterStep
 	public void screenshot(Scenario scenario) {
-		LEVEL configLevel = config.getReporting().getScreenshotLevel();
+		LEVEL configLevel = LEVEL.valueOf((String)config.getMap("reporting").get("screenshotLevel"));
 		byte[] payload = takeScreenshot();
 		String name = String.format("%s: %s", scenario.getName(), scenario.getSourceTagNames());
 		if (configLevel == LEVEL.ALWAYS) {

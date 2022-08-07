@@ -1,19 +1,22 @@
 package com.watermelon.core;
 
-import com.watermelon.core.di.modules.Configuration;
-import io.github.bonigarcia.wdm.config.Architecture;
-import io.github.bonigarcia.wdm.config.OperatingSystem;
-import lombok.extern.slf4j.Slf4j;
+import java.io.InputStream;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+
 import org.testng.xml.XmlTest;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
 import org.yaml.snakeyaml.introspector.PropertyUtils;
 import org.yaml.snakeyaml.representer.Representer;
 
-import java.io.InputStream;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import com.watermelon.core.di.modules.Configuration;
+import com.watermelon.core.di.modules.MapConfiguration;
+
+import io.github.bonigarcia.wdm.config.Architecture;
+import io.github.bonigarcia.wdm.config.OperatingSystem;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class Utils {
@@ -47,6 +50,21 @@ public class Utils {
 		Yaml yamlConfig = new Yaml(constructor, rep);
 		InputStream is = clazz.getClassLoader().getResourceAsStream(fileName);
 		return yamlConfig.load(is);
+	}
+
+	/**
+	 * 
+	 * @param <V>
+	 * @param <K>
+	 * @param fileName
+	 * @return
+	 */
+	public static <V, K> MapConfiguration<K, V> fromYaml(String fileName){
+		Yaml yaml = new Yaml();
+		InputStream is = Utils.class.getClassLoader().getResourceAsStream(fileName);
+		MapConfiguration<K, V> result = new MapConfiguration<>();
+		result.putAll(yaml.load(is));
+		return result;
 	}
 
 	/**

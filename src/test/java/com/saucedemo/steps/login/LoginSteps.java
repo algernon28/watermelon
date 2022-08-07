@@ -1,25 +1,25 @@
 package com.saucedemo.steps.login;
 
+import static org.assertj.core.api.Assertions.from;
+import static org.assertj.core.api.BDDAssertions.then;
+
+import java.util.Map;
+import java.util.Optional;
+
 import com.google.inject.Inject;
 import com.saucedemo.pages.LoginPage;
 import com.watermelon.steps.BaseSteps;
+
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import lombok.extern.slf4j.Slf4j;
-
-import java.util.Map;
-import java.util.Optional;
-
-import static org.assertj.core.api.Assertions.from;
-import static org.assertj.core.api.BDDAssertions.then;
 @Slf4j
 public class LoginSteps extends BaseSteps {
 
 	@Inject
 	private LoginPage loginPage;
-
 	
 	public LoginSteps() {
 		super();

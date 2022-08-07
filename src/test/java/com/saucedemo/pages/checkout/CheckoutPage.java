@@ -1,9 +1,10 @@
 package com.saucedemo.pages.checkout;
 
-import com.google.inject.Inject;
-import com.saucedemo.pages.SauceLabsPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.google.inject.Inject;
+import com.saucedemo.pages.SauceLabsPage;
 
 public abstract class CheckoutPage extends SauceLabsPage {
 

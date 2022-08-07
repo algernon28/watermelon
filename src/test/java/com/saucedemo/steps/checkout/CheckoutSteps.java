@@ -1,5 +1,13 @@
 package com.saucedemo.steps.checkout;
 
+import static com.watermelon.core.assertions.WatermelonAssertions.assertThat;
+import static org.assertj.core.api.BDDAssertions.then;
+
+import java.util.List;
+import java.util.Map;
+
+import org.assertj.core.api.SoftAssertions;
+
 import com.google.inject.Inject;
 import com.saucedemo.pages.CartPage;
 import com.saucedemo.pages.Header;
@@ -9,17 +17,11 @@ import com.saucedemo.pages.checkout.CheckoutInfo;
 import com.saucedemo.pages.checkout.CheckoutOverview;
 import com.watermelon.core.Utils;
 import com.watermelon.steps.BaseSteps;
+
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.But;
 import io.cucumber.java.en.Then;
-import org.assertj.core.api.SoftAssertions;
-
-import java.util.List;
-import java.util.Map;
-
-import static com.watermelon.core.assertions.WatermelonAssertions.assertThat;
-import static org.assertj.core.api.BDDAssertions.then;
 
 public class CheckoutSteps extends BaseSteps {
 	@Inject
