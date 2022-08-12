@@ -97,8 +97,9 @@ _ConfigurationModule:_ provides a Configuration, a java.util.Locale and a Resour
 
 _DriverManagerModule:_ provides a webdriver, using the DriverManager provider, a JavascriptExecutor and a WebDriverWait.
 
-_ModuleInjector:_ injects the aforementioned modules.
->Important: this injector **must** be in the classpath pointed by the runners, otherwise it will not be loaded.
+_GuiceModuleFactory:_ loads the aforementioned modules and creates the relative injector.
+>Important: this factory is declared as implementation of io.cucumber.core.backend.ObjectFactory in META-IF/services as for Java Service Loading specification.
+>Note that because how Cucumber is implemented, also the relative entry _cucumber.object-factory_ in cucumber.properties had to be set for disambiguation.
 
 ####_Web elements_
 These are some convenience wrappers for Selenium Webelement.
