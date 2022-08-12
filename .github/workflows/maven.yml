@@ -34,8 +34,13 @@ jobs:
         --file pom.xml
         clean install
         -DskipTests
+    - name: Maven test
+      run: >
+        mvn -B package
+        -- file pom.xml
+        clean test
         cluecumber-report:reporting 
         -DtestSuite=test-suites/testng.yaml 
         -Dstage=config-dev.yaml 
         -DsuiteThreads=1 
-        -DgithubToken=${{ secrets.GITHUB_TOKEN }}
+        -DgithubToken=${{ secrets.GITHUB_TOKEN }}        
