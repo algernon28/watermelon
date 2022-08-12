@@ -22,6 +22,12 @@ jobs:
         java-version: 17
         distribution: 'temurin'
         cache: maven
+    - name: Install Chrome
+      uses: browser-actions/setup-chrome@latest
+    - name: Install Firefox
+      uses: browser-actions/setup-firefox@latest
+    - name: Install MS Edge
+      uses: browser-actions/setup-edge@latest
     - name: Build with Maven
       run: >
         mvn -B package
