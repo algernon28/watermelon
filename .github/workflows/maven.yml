@@ -11,8 +11,11 @@ on:
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        browser: [chromium, firefox, edge]
+        
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v3
