@@ -23,4 +23,12 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn -B package --file pom.xml clean install cluecumber-report:reporting -Dstage=config-dev.yaml -DsuiteThreads=1 -DgithubToken=${{ github.sha }}
+      run: >
+        mvn -B package
+        --file pom.xml
+        clean install
+        cluecumber-report:reporting 
+        -DtestSuite=test-suites/testng.yaml 
+        -Dstage=config-dev.yaml 
+        -DsuiteThreads=1 
+        -DgithubToken=${{ github.sha }}
