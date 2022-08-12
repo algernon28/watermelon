@@ -27,6 +27,7 @@ jobs:
         mvn -B package
         --file pom.xml
         clean install
+        -DskipTests
         cluecumber-report:reporting 
         -DtestSuite=test-suites/testng.yaml 
         -Dstage=config-dev.yaml 
