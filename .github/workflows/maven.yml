@@ -31,4 +31,4 @@ jobs:
         -DtestSuite=test-suites/testng.yaml 
         -Dstage=config-dev.yaml 
         -DsuiteThreads=1 
-        -DgithubToken=${{ github.sha }}
+        -DgithubToken=${{ secrets.GITHUB_TOKEN }}
