@@ -27,10 +27,10 @@ public class CheckoutOverview extends CheckoutPage {
 	@FindBy(className = "cart_item")
 	@CacheLookup
 	private List<WebElement> cartItems;
-	
+
 	@FindBy(xpath = "//div[normalize-space()='Payment Information:']/following-sibling::div[@class='summary_value_label']")
 	private WebElement paymentInfoValue;
-	
+
 	@FindBy(xpath = "//div[normalize-space()='Shipping Information:']/following-sibling::div[@class='summary_value_label']")
 	private WebElement shippingInfoValue;
 	@FindBy(className = "summary_subtotal_label")
@@ -48,23 +48,23 @@ public class CheckoutOverview extends CheckoutPage {
 	public List<SauceItem> getItems() {
 		return cartItems.stream().map(el -> new SauceItem(el)).toList();
 	}
-	
+
 	public String getPaymentInfo() {
 		return paymentInfoValue.getText();
 	}
-	
+
 	public String getShippingInfo() {
 		return shippingInfoValue.getText();
 	}
-	
+
 	public double getSubTotalValue() {
 		return getMoneyValue(summarySubTotalLabel.getText());
 	}
-	
+
 	public double getTaxValue() {
 		return getMoneyValue(summaryTaxLabel.getText());
 	}
-	
+
 	public double getTotalValue() {
 		return getMoneyValue(summaryTotalLabel.getText());
 	}
@@ -76,7 +76,7 @@ public class CheckoutOverview extends CheckoutPage {
 		log.debug("money = {}", result);
 		return result;
 	}
-	
+
 	public void finish() {
 		checkoutButtons.finishCheckout();
 	}

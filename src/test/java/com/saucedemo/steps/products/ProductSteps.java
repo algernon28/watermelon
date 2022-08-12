@@ -86,7 +86,7 @@ public class ProductSteps extends BaseSteps {
 		String entryString = data.asList().stream().findFirst().get();
 		i_add_products(entryString);
 	}
-	
+
 	@And("I add {string} as products")
 	public void i_add_products(String items) {
 		List<String> entries = List.of(items.split(","));
@@ -96,7 +96,7 @@ public class ProductSteps extends BaseSteps {
 		}).toList();
 		addOrRemove(products, true);
 	}
-	
+
 
 	@And("I remove products")
 	public void i_remove_products(DataTable data) {

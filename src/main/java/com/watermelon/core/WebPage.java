@@ -20,7 +20,7 @@ import com.watermelon.core.di.modules.MapConfiguration;
 
 /**
  * Page Object Parent class
- * 
+ *
  * @author AM
  *
  */
@@ -72,7 +72,7 @@ public abstract class WebPage {
 	 * Wait {@link DriverManagerModule#DefaultTimeout} or until the element is
 	 * visible. Will throw an unchecked {@link TimeoutException} if the element is
 	 * not visible by the timeout.
-	 * 
+	 *
 	 * @param element to be checked
 	 * @return the element itself
 	 */
@@ -82,7 +82,7 @@ public abstract class WebPage {
 
 	/**
 	 * Click an element if visible
-	 * 
+	 *
 	 * @see #waitUntilVisible(WebElement)
 	 * @param element the element to be clicked
 	 */
@@ -93,7 +93,7 @@ public abstract class WebPage {
 	/**
 	 * Clear a text element if visible. It only works for text and password
 	 * elements.
-	 * 
+	 *
 	 * @see #waitUntilVisible(WebElement)
 	 * @param element the element to be cleared
 	 */
@@ -103,7 +103,7 @@ public abstract class WebPage {
 
 	/**
 	 * Clear all the elements. It only works for text and password elements.
-	 * 
+	 *
 	 * @see #clear(WebElement)
 	 * @param elements the {@link List} of elements to be cleared
 	 */
@@ -122,7 +122,7 @@ public abstract class WebPage {
 	/**
 	 * Clear the element and type in the text value. It only works for text and
 	 * password elements.
-	 * 
+	 *
 	 * @param element the element where to type the text
 	 * @param value   the text to be typed in
 	 */
@@ -133,7 +133,7 @@ public abstract class WebPage {
 
 	/**
 	 * Append text into an element
-	 * 
+	 *
 	 * @see #type(WebElement, String)
 	 * @param element the element where to append the text
 	 * @param value   the text to be appended

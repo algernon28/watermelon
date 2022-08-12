@@ -21,11 +21,11 @@ public class CheckoutButtons extends SauceLabsSection {
 	@FindBy(id = "cancel")
 	@CacheLookup
 	private WebElement btnCancel;
-	
+
 	@FindBy(id = "finish")
 	@CacheLookup
 	private WebElement btnFinish;
-	
+
 	@Inject
 	public CheckoutButtons(WebDriver driver, WebDriverWait wait) {
 		super(driver, wait);
@@ -45,7 +45,7 @@ public class CheckoutButtons extends SauceLabsSection {
 		waitUntilVisible(btnCancel);
 		btnFinish.click();
 	}
-	
+
 	@Override
 	public WebElement getTitle() {
 		waitUntilVisible(title);

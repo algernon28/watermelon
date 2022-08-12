@@ -49,6 +49,7 @@ public class CartPage extends SauceLabsPage {
 	 *
 	 * @return the element identifying the page
 	 */
+	@Override
 	public WebElement getTitle() {
 		waitUntilVisible(title);
 		return title;

@@ -20,7 +20,7 @@ public class LoginSteps extends BaseSteps {
 
 	@Inject
 	private LoginPage loginPage;
-	
+
 	public LoginSteps() {
 		super();
 	}

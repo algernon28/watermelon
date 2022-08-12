@@ -102,11 +102,12 @@ public class ProductPage extends SauceLabsPage {
 	 *
 	 * @return the element identifying the page
 	 */
+	@Override
 	public WebElement getTitle() {
 		waitUntilVisible(title);
 		return title;
 	}
-	
+
 	/**
 	 *
 	 * @return the text of the active option

@@ -34,7 +34,7 @@ public class Utils {
 
 	/**
 	 * Deserialize the yaml configuration file into an instance of T type
-	 * 
+	 *
 	 * @param <T>      the type representing the configuration data (ex:
 	 *                 {@linkplain Configuration})
 	 * @param clazz    the class object holding the type
@@ -54,7 +54,7 @@ public class Utils {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param <V>
 	 * @param <K>
 	 * @param fileName
@@ -71,7 +71,7 @@ public class Utils {
 
 	/**
 	 * Lookup a parameter from a TestNG suite context
-	 * 
+	 *
 	 * @param key     the name of the parameter
 	 * @param context the {@link XmlTest} context from the TestNG suite file
 	 * @return the value of the parameter
@@ -84,7 +84,7 @@ public class Utils {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param key the name of the property
 	 * @return the value of the System property
 	 */
@@ -95,7 +95,7 @@ public class Utils {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param csv a comma separated values String
 	 * @return the corresponding List of strings
 	 */
@@ -104,7 +104,7 @@ public class Utils {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param csv a comma separated values String
 	 * @return the corresponding List of integers
 	 */
@@ -121,7 +121,7 @@ public class Utils {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param csv a comma separated values String
 	 * @return the corresponding List of doubles
 	 */

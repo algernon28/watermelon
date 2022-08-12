@@ -6,6 +6,7 @@ import static com.google.common.net.MediaType.PNG;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
@@ -27,12 +28,13 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 
 public class Hooks extends AbstractTestNGCucumberTests {
 	@Inject
-	WebDriver driver;
-
+	private WebDriver driver;
 
 	@Inject
-	MapConfiguration<String, Object> config;
-	
+	private MapConfiguration<String, Object> config;
+
+	private static final List<String> supportedBrowsers = List.of("chrome", "firefox", "opera", "safari");
+
 	public enum LEVEL {
 		ALWAYS, ONLY_FAILED
 	}
@@ -44,16 +46,16 @@ public class Hooks extends AbstractTestNGCucumberTests {
 	public void startUp() throws IOException {
 		driver.manage().window().maximize();
 		Map<String, Object> server = config.getMap("server");
-		String protocol = (String)server.get("protocol");
-		String host = (String)server.get("host");
-		int port =  (Integer)server.get("port");
-		String resource = (String)server.get("resource");		
+		String protocol = (String) server.get("protocol");
+		String host = (String) server.get("host");
+		int port = (Integer) server.get("port");
+		String resource = (String) server.get("resource");
 		driver.navigate().to(new URL(protocol, host, port, resource));
 	}
 
 	@AfterStep
 	public void screenshot(Scenario scenario) {
-		LEVEL configLevel = LEVEL.valueOf((String)config.getMap("reporting").get("screenshotLevel"));
+		LEVEL configLevel = LEVEL.valueOf((String) config.getMap("reporting").get("screenshotLevel"));
 		byte[] payload = takeScreenshot();
 		String name = String.format("%s: %s", scenario.getName(), scenario.getSourceTagNames());
 		if (configLevel == LEVEL.ALWAYS) {
@@ -75,12 +77,11 @@ public class Hooks extends AbstractTestNGCucumberTests {
 		String version = rd.getCapabilities().getBrowserVersion();
 		String message = String.format("Browser: %s [%s], Driver: %s, Language: %s", browser, version,
 				rd.getClass().getSimpleName(), locale.getLanguage());
-		switch (browser) {
-		case "chrome" -> scenario.attach(readImage("chrome.png"), PNG.toString(), message);
-		case "firefox" -> scenario.attach(readImage("firefox.png"), PNG.toString(), message);
-		case "opera" -> scenario.attach(readImage("opera.png"), PNG.toString(), message);
-		case "safari" -> scenario.attach(readImage("safari.png"), PNG.toString(), message);
-		default -> scenario.attach("Unknown Browser", PLAIN_TEXT_UTF_8.toString(), message);
+		if (supportedBrowsers.contains(browser)) {
+			String imageName = browser.concat(".png");
+			scenario.attach(readImage(imageName), PNG.toString(), message);
+		} else {
+			scenario.attach("Unknown Browser", PLAIN_TEXT_UTF_8.toString(), message);
 		}
 	}
 

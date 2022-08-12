@@ -35,7 +35,7 @@ public class CheckoutSteps extends BaseSteps {
 
 	@Inject
 	private CartPage cartPage;
-	
+
 	@Inject
 	private Header headerPage;
 

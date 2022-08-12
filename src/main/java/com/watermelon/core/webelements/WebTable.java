@@ -71,9 +71,9 @@ public class WebTable {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param row the row element
-	 * @return a {@link List} 
+	 * @return a {@link List}
 	 */
 	private List<WebElement> getColumnsByRow(WebElement row) {
 		return row.findElements(By.tagName("td"));
@@ -116,7 +116,7 @@ public class WebTable {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return the number of rows of the table
 	 */
 	public int getNumRows() {
@@ -124,7 +124,7 @@ public class WebTable {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return the number of columns of the table
 	 */
 	public int getNumColumns() {
@@ -132,7 +132,7 @@ public class WebTable {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return if the table has a header row or not
 	 */
 	public boolean hasHeader() {
@@ -140,7 +140,7 @@ public class WebTable {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return the text content of the header's cells of the table
 	 */
 	public List<String> getColumnNames() {
@@ -148,7 +148,7 @@ public class WebTable {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return a {@link Map} with the column name as key and the column position as value
 	 */
 	public Map<String, Integer> getColumnMap() {

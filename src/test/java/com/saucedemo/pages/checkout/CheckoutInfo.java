@@ -31,7 +31,7 @@ public class CheckoutInfo extends CheckoutPage {
 	public CheckoutInfo(WebDriver driver, WebDriverWait wait) {
 		super(driver, wait);
 	}
-	
+
 	@Override
 	public WebElement getTitle() {
 		waitUntilVisible(title);
@@ -44,7 +44,7 @@ public class CheckoutInfo extends CheckoutPage {
 		postalCode.sendKeys(myPostalCode);
 	}
 
-	
+
 	@Override
 	public boolean isLoaded() {
 		WebElement pageTitle = getTitle();

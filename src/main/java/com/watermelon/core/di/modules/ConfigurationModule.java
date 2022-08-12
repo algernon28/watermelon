@@ -43,7 +43,7 @@ public class ConfigurationModule extends AbstractModule {
 		return config;
 	}
 
-	@Provides 
+	@Provides
 	public MapConfiguration<String,Object> getConfigurationBean() {
 		return Utils.fromYaml(stage);
 	}

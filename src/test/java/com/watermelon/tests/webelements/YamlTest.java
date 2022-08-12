@@ -13,8 +13,8 @@ public class YamlTest {
   @Test
   public void beforeTestTest() {
   }
-  
-  
+
+
   @Test
   public void testYamlBean() throws FileNotFoundException {
 	  MapConfiguration<String,String> bean = Utils.fromYaml("config-dev.yaml");
