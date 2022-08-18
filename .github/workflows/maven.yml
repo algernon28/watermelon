@@ -14,9 +14,10 @@ jobs:
     strategy:
       matrix:
         browser: [chromium, firefox, edge]
-        
-    runs-on: windows-latest
-
+        os: [windows, ubuntu, macos]
+        version: [latest, latest, latest]
+    runs-on: ${{ matrix.os }}
+  
     steps:
     
     - uses: actions/checkout@v3
@@ -34,9 +35,9 @@ jobs:
     - uses: browser-actions/setup-firefox@latest
       if: matrix.browser == 'firefox'
       with:
-          firefox-version: "84.0"
+          firefox-version: "latest"
     - uses: browser-actions/setup-chromium@latest
-      if: matrix.browser == 'chromium'
+      if: matrix.browser == 'chromium' && matrix.os == 'windows'
     - uses: browser-actions/setup-edge@latest
       if: matrix.browser == 'edge'
 
