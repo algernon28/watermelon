@@ -37,10 +37,9 @@ jobs:
       with:
           firefox-version: "latest"
     - uses: browser-actions/setup-chromium@latest
-      if: matrix.browser == 'chromium' && matrix.os == 'windows'
+      if: matrix.browser == 'chromium'
     - uses: browser-actions/setup-edge@latest
-      if: matrix.browser == 'edge'
-
+      if: matrix.browser == 'edge' 
     - name: Run tests on Firefox
       if: matrix.browser == 'firefox'
       run: |
@@ -51,7 +50,7 @@ jobs:
           $Env:CHROMIUM_BIN = "chrome"
           yarn test --browsers=Chromium
     - name: Run test on Microsoft Edge
-      if: matrix.browser == 'edge'
+      if: matrix.browser == 'edge'  && matrix.os == 'windows'
       run: |
           $Env:EDGE_BIN = "msedge.exe"
           yarn test --browsers=Edge      
