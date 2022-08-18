@@ -13,9 +13,9 @@ jobs:
   build:
     strategy:
       matrix:
-        browser: [chromium, firefox, edge]
-        os: [windows, ubuntu]
-        version: [latest, latest]
+        browser: [chromium]
+        os: [windows]
+        version: [latest]
     runs-on: ${{ matrix.os }}
   
     steps:
