@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.google.inject.Inject;
@@ -15,7 +16,7 @@ public abstract class BaseSteps {
 	public static final String BASE_MESSAGENAME = "messages";
 
 	@Inject
-	protected WebDriver driver;
+	protected RemoteWebDriver driver;
 
 	@Inject
 	protected JavascriptExecutor jsExecutor;

@@ -1,186 +1,201 @@
 <!DOCTYPE html>
 <!-- saved from url=(0040)http://the-internet.herokuapp.com/tables -->
-<html class="no-js" lang="en"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <script src="./webtable_files/298279967.js.download"></script>
-    
-    <meta name="viewport" content="width=device-width">
-    <title>The Internet</title>
-    <link href="./webtable_files/app.css" rel="stylesheet">
-    <link href="./webtable_files/font-awesome.css" rel="stylesheet">
-    <script src="./webtable_files/jquery-1.11.3.min.js.download"></script>
-    <script src="./webtable_files/jquery-ui.js.download"></script>
-    <script src="./webtable_files/foundation.js.download"></script><meta class="foundation-mq-small"><meta class="foundation-mq-medium"><meta class="foundation-mq-large"><style></style>
-    <script src="./webtable_files/foundation.alerts.js.download"></script>
-    <script>
+<html class="no-js" lang="en">
+<!--<![endif]-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="./webtable_files/298279967.js.download"></script>
+
+<meta name="viewport" content="width=device-width">
+<title>The Internet</title>
+<link href="./webtable_files/app.css" rel="stylesheet">
+<link href="./webtable_files/font-awesome.css" rel="stylesheet">
+<script src="./webtable_files/jquery-1.11.3.min.js.download"></script>
+<script src="./webtable_files/jquery-ui.js.download"></script>
+<script src="./webtable_files/foundation.js.download"></script>
+<meta class="foundation-mq-small">
+<meta class="foundation-mq-medium">
+<meta class="foundation-mq-large">
+<style></style>
+<script src="./webtable_files/foundation.alerts.js.download"></script>
+<script>
       $(document).foundation();
     </script>
-  </head>
-  <body>
-    <div class="row">
-      <div id="flash-messages" class="large-12 columns">
-      
-        
-      
-        
-      
-        
-      
-      </div>
-    </div>
-    <div class="row">
-      <a href="https://github.com/tourdedave/the-internet"><img style="position: absolute; top: 0; right: 0; border: 0;" src="./webtable_files/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
-      <div id="content" class="large-12 columns">
-        <script src="./webtable_files/jquery.tablesorter.min.js.download"></script>
-<script>
+</head>
+<body>
+	<div class="row">
+		<div id="flash-messages" class="large-12 columns"></div>
+	</div>
+	<div class="row">
+		<a href="https://github.com/tourdedave/the-internet"><img
+			style="position: absolute; top: 0; right: 0; border: 0;"
+			src="./webtable_files/forkme_right_green_007200.png"
+			alt="Fork me on GitHub"></a>
+		<div id="content" class="large-12 columns">
+			<script src="./webtable_files/jquery.tablesorter.min.js.download"></script>
+			<script>
 $(function(){
   $("#table1").tablesorter();
   $("#table2").tablesorter();
 });
 </script>
-<style>
-  span {
-    padding-right: 20px;
-    background-repeat: no-repeat;
-    background-position: 100% 100%;
-  }
-  .tablesorter-headerAsc span   { background-image: url('img/down-arrow.png');  }
-  .tablesorter-headerDesc span  { background-image: url('img/up-arrow.png');    }
+			<style>
+span {
+	padding-right: 20px;
+	background-repeat: no-repeat;
+	background-position: 100% 100%;
+}
+
+.tablesorter-headerAsc span {
+	background-image: url('img/down-arrow.png');
+}
+
+.tablesorter-headerDesc span {
+	background-image: url('img/up-arrow.png');
+}
 </style>
-<div class="example">
-  <h3>Data Tables</h3>
-  <p>Often times when you see a table it contains data which is sortable -- sometimes with actions that can be taken within each row (e.g. edit, delete). And it can be challenging to automate interaction with sets of data in a table depending on how it is constructed.</p>
+			<div class="example">
+				<h3>Data Tables</h3>
+				<p>Often times when you see a table it contains data which is
+					sortable -- sometimes with actions that can be taken within each
+					row (e.g. edit, delete). And it can be challenging to automate
+					interaction with sets of data in a table depending on how it is
+					constructed.</p>
 
-  <h4>Example 1</h4>
-  <p>No Class or ID attributes to signify groupings of rows and columns</p>
-  <table id="table1" class="tablesorter">
-    <thead>
-      <tr>
-        <th class="header"><span>Last Name</span></th>
-        <th class="header"><span>First Name</span></th>
-        <th class="header"><span>Email</span></th>
-        <th class="header"><span>Due</span></th>
-        <th class="header"><span>Web Site</span></th>
-        <th class="header"><span>Action</span></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Smith</td>
-        <td>John</td>
-        <td>jsmith@gmail.com</td>
-        <td>$50.00</td>
-        <td>http://www.jsmith.com</td>
-        <td>
-          <a href="http://the-internet.herokuapp.com/tables#edit">edit</a>
-          <a href="http://the-internet.herokuapp.com/tables#delete">delete</a>
-        </td>
-      </tr>
-      <tr>
-        <td>Bach</td>
-        <td>Frank</td>
-        <td>fbach@yahoo.com</td>
-        <td>$51.00</td>
-        <td>http://www.frank.com</td>
-        <td>
-          <a href="http://the-internet.herokuapp.com/tables#edit">edit</a>
-          <a href="http://the-internet.herokuapp.com/tables#delete">delete</a>
-        </td>
-      </tr>
-      <tr>
-        <td>Doe</td>
-        <td>Jason</td>
-        <td>jdoe@hotmail.com</td>
-        <td>$100.00</td>
-        <td>http://www.jdoe.com</td>
-        <td>
-          <a href="http://the-internet.herokuapp.com/tables#edit">edit</a>
-          <a href="http://the-internet.herokuapp.com/tables#delete">delete</a>
-        </td>
-      </tr>
-      <tr>
-        <td>Conway</td>
-        <td>Tim</td>
-        <td>tconway@earthlink.net</td>
-        <td>$50.00</td>
-        <td>http://www.timconway.com</td>
-        <td>
-          <a href="http://the-internet.herokuapp.com/tables#edit">edit</a>
-          <a href="http://the-internet.herokuapp.com/tables#delete">delete</a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+				<h4>Example 1</h4>
+				<p>No Class or ID attributes to signify groupings of rows and
+					columns</p>
+				<table id="table1" class="tablesorter">
+					<thead>
+						<tr>
+							<th class="header"><span>Last Name</span></th>
+							<th class="header"><span>First Name</span></th>
+							<th class="header"><span>Email</span></th>
+							<th class="header"><span>Due</span></th>
+							<th class="header"><span>Web Site</span></th>
+							<th class="header"><span>Action</span></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Smith</td>
+							<td>John</td>
+							<td>jsmith@gmail.com</td>
+							<td>$50.00</td>
+							<td>http://www.jsmith.com</td>
+							<td><a href="http://the-internet.herokuapp.com/tables#edit">edit</a>
+								<a href="http://the-internet.herokuapp.com/tables#delete">delete</a>
+							</td>
+						</tr>
+						<tr>
+							<td>Bach</td>
+							<td>Frank</td>
+							<td>fbach@yahoo.com</td>
+							<td>$51.00</td>
+							<td>http://www.frank.com</td>
+							<td><a href="http://the-internet.herokuapp.com/tables#edit">edit</a>
+								<a href="http://the-internet.herokuapp.com/tables#delete">delete</a>
+							</td>
+						</tr>
+						<tr>
+							<td>Doe</td>
+							<td>Jason</td>
+							<td>jdoe@hotmail.com</td>
+							<td>$100.00</td>
+							<td>http://www.jdoe.com</td>
+							<td><a href="http://the-internet.herokuapp.com/tables#edit">edit</a>
+								<a href="http://the-internet.herokuapp.com/tables#delete">delete</a>
+							</td>
+						</tr>
+						<tr>
+							<td>Conway</td>
+							<td>Tim</td>
+							<td>tconway@earthlink.net</td>
+							<td>$50.00</td>
+							<td>http://www.timconway.com</td>
+							<td><a href="http://the-internet.herokuapp.com/tables#edit">edit</a>
+								<a href="http://the-internet.herokuapp.com/tables#delete">delete</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 
-  <h4>Example 2</h4>
-  <p>Class and ID attributes to signify groupings of rows and columns</p>
-  <table id="table2" class="tablesorter">
-    <thead>
-      <tr>
-        <th class="header"><span class="last-name">Last Name</span></th>
-        <th class="header"><span class="first-name">First Name</span></th>
-        <th class="header"><span class="email">Email</span></th>
-        <th class="header"><span class="dues">Due</span></th>
-        <th class="header"><span class="web-site">Web Site</span></th>
-        <th class="header"><span class="action">Action</span></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="last-name">Smith</td>
-        <td class="first-name">John</td>
-        <td class="email">jsmith@gmail.com</td>
-        <td class="dues">$50.00</td>
-        <td class="web-site">http://www.jsmith.com</td>
-        <td class="action">
-          <a href="http://the-internet.herokuapp.com/tables#edit">edit</a>
-          <a href="http://the-internet.herokuapp.com/tables#delete">delete</a>
-        </td>
-      </tr>
-      <tr>
-        <td class="last-name">Bach</td>
-        <td class="first-name">Frank</td>
-        <td class="email">fbach@yahoo.com</td>
-        <td class="dues">$51.00</td>
-        <td class="web-site">http://www.frank.com</td>
-        <td class="action">
-          <a href="http://the-internet.herokuapp.com/tables#edit">edit</a>
-          <a href="http://the-internet.herokuapp.com/tables#delete">delete</a>
-        </td>
-      </tr>
-      <tr>
-        <td class="last-name">Doe</td>
-        <td class="first-name">Jason</td>
-        <td class="email">jdoe@hotmail.com</td>
-        <td class="dues">$100.00</td>
-        <td class="web-site">http://www.jdoe.com</td>
-        <td class="action">
-          <a href="http://the-internet.herokuapp.com/tables#edit">edit</a>
-          <a href="http://the-internet.herokuapp.com/tables#delete">delete</a>
-        </td>
-      </tr>
-      <tr>
-        <td class="last-name">Conway</td>
-        <td class="first-name">Tim</td>
-        <td class="email">tconway@earthlink.net</td>
-        <td class="dues">$50.00</td>
-        <td class="web-site">http://www.timconway.com</td>
-        <td class="action">
-          <a href="http://the-internet.herokuapp.com/tables#edit">edit</a>
-          <a href="http://the-internet.herokuapp.com/tables#delete">delete</a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+				<h4>Example 2</h4>
+				<p>Class and ID attributes to signify groupings of rows and
+					columns</p>
+				<table id="table2" class="tablesorter">
+					<thead>
+						<tr>
+							<th class="header"><span class="last-name">Last Name</span></th>
+							<th class="header"><span class="first-name">First
+									Name</span></th>
+							<th class="header"><span class="email">Email</span></th>
+							<th class="header"><span class="dues">Due</span></th>
+							<th class="header"><span class="web-site">Web Site</span></th>
+							<th class="header"><span class="action">Action</span></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="last-name">Smith</td>
+							<td class="first-name">John</td>
+							<td class="email">jsmith@gmail.com</td>
+							<td class="dues">$50.00</td>
+							<td class="web-site">http://www.jsmith.com</td>
+							<td class="action"><a
+								href="http://the-internet.herokuapp.com/tables#edit">edit</a> <a
+								href="http://the-internet.herokuapp.com/tables#delete">delete</a>
+							</td>
+						</tr>
+						<tr>
+							<td class="last-name">Bach</td>
+							<td class="first-name">Frank</td>
+							<td class="email">fbach@yahoo.com</td>
+							<td class="dues">$51.00</td>
+							<td class="web-site">http://www.frank.com</td>
+							<td class="action"><a
+								href="http://the-internet.herokuapp.com/tables#edit">edit</a> <a
+								href="http://the-internet.herokuapp.com/tables#delete">delete</a>
+							</td>
+						</tr>
+						<tr>
+							<td class="last-name">Doe</td>
+							<td class="first-name">Jason</td>
+							<td class="email">jdoe@hotmail.com</td>
+							<td class="dues">$100.00</td>
+							<td class="web-site">http://www.jdoe.com</td>
+							<td class="action"><a
+								href="http://the-internet.herokuapp.com/tables#edit">edit</a> <a
+								href="http://the-internet.herokuapp.com/tables#delete">delete</a>
+							</td>
+						</tr>
+						<tr>
+							<td class="last-name">Conway</td>
+							<td class="first-name">Tim</td>
+							<td class="email">tconway@earthlink.net</td>
+							<td class="dues">$50.00</td>
+							<td class="web-site">http://www.timconway.com</td>
+							<td class="action"><a
+								href="http://the-internet.herokuapp.com/tables#edit">edit</a> <a
+								href="http://the-internet.herokuapp.com/tables#delete">delete</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 
-      </div>
-    </div>
-    <div id="page-footer" class="row">
-      <div class="large-4 large-centered columns">
-        <hr>
-        <div style="text-align: center;">Powered by <a target="_blank" href="http://elementalselenium.com/">Elemental Selenium</a></div>
-      </div>
-    </div>
-  
+		</div>
+	</div>
+	<div id="page-footer" class="row">
+		<div class="large-4 large-centered columns">
+			<hr>
+			<div style="text-align: center;">
+				Powered by <a target="_blank" href="http://elementalselenium.com/">Elemental
+					Selenium</a>
+			</div>
+		</div>
+	</div>
 
-</body></html>
+
+</body>
+</html>

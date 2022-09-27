@@ -1,8 +1,0 @@
-deviceName: Pixel 4
-browserName: Chrome
-version: 69.0.3497.100
-maxInstances: 1
-automationName: UiAutomator2
-platformName: Android
-appPackage: com.android.calculator2
-appActivity: com.android.calculator2.Calculator

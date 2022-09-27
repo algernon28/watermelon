@@ -6,3 +6,7 @@ server:
 reporting:
 #Use 'SUCCESS' to always take screenshot after each step, 'FAIL' to take them only after fails
    screenshotLevel: ALWAYS
+appiumServer:
+   host: 127.0.0.1
+   path: /wd/hub
+   port: 4723

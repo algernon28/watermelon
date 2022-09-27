@@ -9,6 +9,7 @@ import lombok.Data;
 public class Configuration {
 	private String githubToken;
 	private Server server;
+	private AppiumServer appiumServer;
 	private Reporting reporting;
 
 	@Data
@@ -21,6 +22,13 @@ public class Configuration {
 		public URL getURL() throws MalformedURLException {
 			return new URL(protocol, host, port, resource);
 		}
+	}
+	
+	@Data
+	public static class AppiumServer {
+		private String host;
+		private String path;
+		private int port;
 	}
 
 	@Data

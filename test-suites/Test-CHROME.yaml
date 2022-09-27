@@ -8,4 +8,4 @@ tests:
       country: IT
       architecture: X64
    classes:
-   - com.saucedemo.steps.CucumberChromeRunner
+   - com.saucedemo.web.steps.CucumberChromeRunner

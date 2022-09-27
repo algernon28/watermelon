@@ -1,12 +1,26 @@
 package com.watermelon.core.di.modules;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.Duration;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.CapabilitiesUtils;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Reporter;
 import org.testng.xml.XmlTest;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.watermelon.core.UnsupportedBrowserException;
@@ -14,9 +28,11 @@ import com.watermelon.core.driver.ChromeManager;
 import com.watermelon.core.driver.EdgeManager;
 import com.watermelon.core.driver.FireFoxManager;
 
+import io.appium.java_client.AppiumDriver;
 import io.cucumber.guice.ScenarioScoped;
 import io.github.bonigarcia.wdm.config.DriverManagerType;
 import io.github.bonigarcia.wdm.config.WebDriverManagerException;
+import lombok.SneakyThrows;
 
 /**
  * Service Provider: provides a thread-safe instance of {@link WebDriver} for
@@ -28,16 +44,43 @@ import io.github.bonigarcia.wdm.config.WebDriverManagerException;
  *
  */
 @ScenarioScoped
-public class DriverManager implements Provider<WebDriver> {
+public class DriverManager implements Provider<RemoteWebDriver> {
 
-	private static final ThreadLocal<WebDriver> DRIVERPOOL = new ThreadLocal<>();
+	private static final ThreadLocal<RemoteWebDriver> DRIVERPOOL = new ThreadLocal<>();
+	private Configuration config;
 
 	@Inject
-	public DriverManager(Configuration config) throws UnsupportedBrowserException {
+	public DriverManager(Configuration config) throws UnsupportedBrowserException, IOException {
+		this.config = config;
+		RemoteWebDriver driver;
 		XmlTest context = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest();
 		String myBrowser = context.getParameter("browser");
-		DriverManagerType browser = DriverManagerType.valueOf(myBrowser.toUpperCase());
+		Optional<String> platform = Optional.ofNullable(context.getParameter("platform"));
+		if(platform.isPresent()) {
+			driver = resolveAppiumDriver(context);
+		} else {
+			driver = (RemoteWebDriver) resolveWebDriver(context, myBrowser);		
+		}
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
+		DRIVERPOOL.set(driver);
+	}
+	
+	private AppiumDriver resolveAppiumDriver(XmlTest context) throws IOException {
+		Path capsPath = Paths.get("src/test/resources/capabilities",context.getParameter("caps"));
+		Capabilities caps = loadCapabilities(capsPath);
+		return new AppiumDriver(caps);		
+	}
+	
+	private Capabilities loadCapabilities(Path jsonPath) throws IOException {
+		URL fileURL = jsonPath.toAbsolutePath().toUri().toURL();
+		@SuppressWarnings("unchecked")
+		Map<String, ?> map = new ObjectMapper().readValue(fileURL, HashMap.class);
+		return new DesiredCapabilities(map);
+	}
+	
+	private WebDriver resolveWebDriver(XmlTest context, String browserName) throws UnsupportedBrowserException {
 		WebDriver driver;
+		DriverManagerType browser = DriverManagerType.valueOf(browserName.toUpperCase());
 		switch (browser) {
 		case CHROME, CHROMIUM:
 			driver = new ChromeManager(context.getAllParameters()).getDriver();
@@ -55,8 +98,7 @@ public class DriverManager implements Provider<WebDriver> {
 			String msg = String.format("Browser type [%s] not recognised", browser);
 			throw new WebDriverManagerException(msg);
 		}
-		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
-		DRIVERPOOL.set(driver);
+		return driver;		
 	}
 
 	/**
@@ -72,7 +114,7 @@ public class DriverManager implements Provider<WebDriver> {
 	 * @return the Selenium {@link WebDriver} instance
 	 */
 	@Override
-	public WebDriver get() {
+	public RemoteWebDriver get() {
 		return DRIVERPOOL.get();
 	}
 

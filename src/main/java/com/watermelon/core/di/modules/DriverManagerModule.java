@@ -5,6 +5,7 @@ import java.time.Duration;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,21 +30,21 @@ public class DriverManagerModule extends AbstractModule {
 	@Override
 	protected void configure() {
 		logger.debug("Configuring {}", getClass().getSimpleName());
-		bind(WebDriver.class).toProvider(DriverManager.class);
+		bind(RemoteWebDriver.class).toProvider(DriverManager.class);
 	}
 
 	@Provides
-	public JavascriptExecutor getJavascriptExecutor(WebDriver driver) {
-		return (JavascriptExecutor) driver;
+	public JavascriptExecutor getJavascriptExecutor(RemoteWebDriver driver) {
+		return driver;
 	}
 
 	@Provides
-	public Actions getActions(WebDriver driver) {
+	public Actions getActions(RemoteWebDriver driver) {
 		return new Actions(driver);
 	}
 
 	@Provides
-	public WebDriverWait getWait(WebDriver driver) {
+	public WebDriverWait getWait(RemoteWebDriver driver) {
 		return new WebDriverWait(driver, DefaultTimeout, DefaultTimeoutInterval);
 	}
 }

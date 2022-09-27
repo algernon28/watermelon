@@ -1,0 +1,12 @@
+{
+  "platformName": "Android",
+  "appium:deviceName": "Android GoogleAPI Emulator",
+  "appium:deviceOrientation": "portrait",
+  "appium:platformVersion": "12.0",
+  "appium:automationName": "UiAutomator2",
+  "appium:app": "storage:filename=mda-1.0.13-docs-16.apk",
+  "sauce:options": {
+    "build": "appium-build-CR43Z",
+    "name": "SauceDemo App"
+  }
+}

@@ -1,0 +1,9 @@
+name: Test-method Suite
+tests:
+-  name: Android IT
+   parameters:
+      type: Appium
+      platform: Android
+      caps: pixel4.json
+   classes:
+   - com.saucedemo.mobile.steps.AndroidRunner

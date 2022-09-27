@@ -15,6 +15,9 @@ public abstract class AbstractManager<T extends WebDriver> implements Manager<T>
 	protected Optional<String> myOS;
 	protected String myBrowser;
 	protected DriverManagerType browser;
+	protected Optional<String> testType;
+	protected Optional<String> myPlatform;
+	protected String driverPath;
 
 	protected WebDriverManager wdm;
 	protected WebDriver driver;
@@ -26,6 +29,9 @@ public abstract class AbstractManager<T extends WebDriver> implements Manager<T>
 		myOS = Optional.ofNullable(parameters.get("os"));
 		myBrowser = parameters.get("browser");
 		browser = DriverManagerType.valueOf(myBrowser.toUpperCase());
+		testType = Optional.ofNullable(parameters.get("type"));
+		myPlatform = Optional.ofNullable(parameters.get("platform"));
+
 	}
 
 }
