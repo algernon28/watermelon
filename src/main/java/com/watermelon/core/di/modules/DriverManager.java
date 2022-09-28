@@ -1,7 +1,6 @@
 package com.watermelon.core.di.modules;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -12,27 +11,26 @@ import java.util.Optional;
 
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.CapabilitiesUtils;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Reporter;
 import org.testng.xml.XmlTest;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.watermelon.core.UnsupportedBrowserException;
+import com.watermelon.core.di.modules.Configuration.AppiumServer;
 import com.watermelon.core.driver.ChromeManager;
 import com.watermelon.core.driver.EdgeManager;
 import com.watermelon.core.driver.FireFoxManager;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.ios.IOSDriver;
 import io.cucumber.guice.ScenarioScoped;
 import io.github.bonigarcia.wdm.config.DriverManagerType;
 import io.github.bonigarcia.wdm.config.WebDriverManagerException;
-import lombok.SneakyThrows;
 
 /**
  * Service Provider: provides a thread-safe instance of {@link WebDriver} for
@@ -56,28 +54,36 @@ public class DriverManager implements Provider<RemoteWebDriver> {
 		XmlTest context = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest();
 		String myBrowser = context.getParameter("browser");
 		Optional<String> platform = Optional.ofNullable(context.getParameter("platform"));
-		if(platform.isPresent()) {
-			driver = resolveAppiumDriver(context);
+		if (platform.isPresent()) {
+			driver = resolveAppiumDriver(context, platform.get());
 		} else {
-			driver = (RemoteWebDriver) resolveWebDriver(context, myBrowser);		
+			driver = (RemoteWebDriver) resolveWebDriver(context, myBrowser);
 		}
-		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
 		DRIVERPOOL.set(driver);
 	}
-	
-	private AppiumDriver resolveAppiumDriver(XmlTest context) throws IOException {
-		Path capsPath = Paths.get("src/test/resources/capabilities",context.getParameter("caps"));
+
+	private AppiumDriver resolveAppiumDriver(XmlTest context, String platform) throws IOException {
+		AppiumServer appium = config.getAppiumServer();
+		URL url = new URL("http", appium.getHost(), appium.getPort(), appium.getPath());
+		Path capsPath = Paths.get("src/test/resources/capabilities", context.getParameter("caps"));
 		Capabilities caps = loadCapabilities(capsPath);
-		return new AppiumDriver(caps);		
+		switch (platform.toLowerCase()) {
+		case "android":
+			return new AndroidDriver(url, caps);
+		case "ios":
+			return new IOSDriver(url, caps);
+		default:
+			throw new IllegalArgumentException("Unexpected platform: " + platform);
+		}
 	}
-	
+
 	private Capabilities loadCapabilities(Path jsonPath) throws IOException {
 		URL fileURL = jsonPath.toAbsolutePath().toUri().toURL();
 		@SuppressWarnings("unchecked")
 		Map<String, ?> map = new ObjectMapper().readValue(fileURL, HashMap.class);
 		return new DesiredCapabilities(map);
 	}
-	
+
 	private WebDriver resolveWebDriver(XmlTest context, String browserName) throws UnsupportedBrowserException {
 		WebDriver driver;
 		DriverManagerType browser = DriverManagerType.valueOf(browserName.toUpperCase());
@@ -98,7 +104,8 @@ public class DriverManager implements Provider<RemoteWebDriver> {
 			String msg = String.format("Browser type [%s] not recognised", browser);
 			throw new WebDriverManagerException(msg);
 		}
-		return driver;		
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
+		return driver;
 	}
 
 	/**

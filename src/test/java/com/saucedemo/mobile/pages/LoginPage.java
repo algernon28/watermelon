@@ -2,44 +2,37 @@ package com.saucedemo.mobile.pages;
 
 import java.util.Optional;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.google.inject.Inject;
 import com.watermelon.core.MobilePage;
-import com.watermelon.core.WebPage;
 
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.cucumber.guice.ScenarioScoped;
 
 @ScenarioScoped
 public class LoginPage extends MobilePage {
 
-	@AndroidFindBy(accessibility = "longpress reset app")
+	@AndroidFindBy(xpath = "//android.widget.ScrollView[@content-desc='test-Login']/android.view.ViewGroup/android.widget.ImageView[1]")
 	private WebElement imgLoginLogo;
 
-	@AndroidFindBy(accessibility = "Username input field")
+	@AndroidFindBy(accessibility = "test-Username")
 	private WebElement txtUsername;
 
-	@AndroidFindBy(accessibility = "Password input field")
+	@AndroidFindBy(accessibility = "test-Password")
 	private WebElement txtPassword;
 
-	@AndroidFindBy(accessibility = "Login button")
+	@AndroidFindBy(accessibility = "test-LOGIN")
 	private WebElement btnLogin;
 
-	@FindBy(xpath = "//android.view.ViewGroup[@content-desc=\"Username-error-message\"]/android.widget.TextView")
-	private WebElement errorMessageUsername;
+	@AndroidFindBy(accessibility = "test-Error message")
+	private WebElement errorMessage;
 
-	@FindBy(xpath = "//android.view.ViewGroup[@content-desc=\"Password-error-message\"]/android.widget.TextView")
-	private WebElement errorMessagePassword;
-
+	
 	@Inject
-	public LoginPage(AppiumDriver driver, WebDriverWait wait) {
+	public LoginPage(RemoteWebDriver driver, WebDriverWait wait) {
 		super(driver, wait);
 	}
 
@@ -66,14 +59,13 @@ public class LoginPage extends MobilePage {
 
 	public Optional<String> errorMessage() {
 		try {
-			wait.until(ExpectedConditions.or(
-					ExpectedConditions.visibilityOf(errorMessageUsername),
-					ExpectedConditions.visibilityOf(errorMessagePassword)));
+			waitUntilVisible(errorMessage);
 		} catch (Exception e) {
 			return Optional.empty();
 		}
-		return Optional.of("Username and Password are required");
+		return Optional.of(errorMessage.getText());
 	}
+	
 
 	@Override
 	public WebElement getTitle() {

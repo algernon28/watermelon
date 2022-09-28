@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import com.google.inject.Inject;
-import com.saucedemo.web.pages.LoginPage;
+import com.saucedemo.mobile.pages.LoginPage;
 import com.watermelon.steps.BaseSteps;
 
 import io.cucumber.datatable.DataTable;
@@ -28,7 +28,6 @@ public class LoginSteps extends BaseSteps {
 	@Given("I am on the mobile login page")
 	public void i_land_on_the_login_page() throws Throwable {
 		log.debug("Driver: {}", driver);
-		log.debug("{}", driver.getCurrentUrl());
 		then(loginPage).as("Login page did not show").returns(true, from(LoginPage::isLoaded));
 
 	}

@@ -3,13 +3,14 @@ package com.watermelon.steps;
 import java.util.ResourceBundle;
 
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.google.inject.Inject;
 import com.watermelon.core.di.modules.MapConfiguration;
+
+import lombok.SneakyThrows;
 
 public abstract class BaseSteps {
 
@@ -35,5 +36,6 @@ public abstract class BaseSteps {
 	protected ResourceBundle bundle;
 
 	protected BaseSteps() {
+
 	}
 }

@@ -4,7 +4,6 @@ import java.text.NumberFormat;
 import java.util.List;
 import java.util.Locale;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.CacheLookup;

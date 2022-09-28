@@ -14,12 +14,13 @@ plugin = { "pretty",
 				"html:target/TestReports/cucumber/android/report.html",
 				"timeline:target/TestReports/cucumber/android/timeline",
 				"json:target/TestReports/cucumber/cucumber-android.properties",
-				"testng:target/TestReports/cucumber/cucumber-android.xml"
+				"testng:target/TestReports/cucumber/cucumber-android.xml",
+				"rerun:target/TestReports/cucumber/cucumber-android-rerun.txt"
 				}
 )
 @Slf4j
 public class AndroidRunner extends AbstractTestNGCucumberTests {
-
+	
 	@Override
 	@DataProvider(parallel = false)
 	public Object[][] scenarios() {
